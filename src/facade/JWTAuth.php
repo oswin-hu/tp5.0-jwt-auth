@@ -107,6 +107,6 @@ class JWTAuth
 
     public static function __callStatic($name, $arguments)
     {
-        return (new self())->init()->$name($arguments);
+        return (new self())->init()->jwt->$name($arguments);
     }
 }
