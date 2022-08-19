@@ -41,6 +41,7 @@ class JWTAuth
         $storage   = new $this->config['blacklist_storage'];
         $blacklist = new Blacklist($storage);
         $blacklist->setRefreshTTL($this->config['refresh_ttl'])->setGracePeriod($this->config['blacklist_grace_period']);
+        return $blacklist;
     }
 
     protected function registerProvider()
