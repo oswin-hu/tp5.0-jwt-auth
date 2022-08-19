@@ -5,6 +5,7 @@ namespace jwt\command;
 
 use think\console\Command;
 use think\console\Input;
+use think\console\input\Option;
 use think\console\Output;
 
 
@@ -13,7 +14,17 @@ class SecretCommand extends Command
     public function configure()
     {
         $this->setName('jwt:create')
+            ->addOption('module', 'm', Option::VALUE_OPTIONAL, 'set configuration generated modules', null)
             ->setDescription('create jwt secret and create config file');
+    }
+
+    protected function getModule()
+    {
+        $module = '';
+        if ($this->input->hasOption('module')) {
+            $module = $this->input->getOption('module');
+        }
+        return $module;
     }
 
     public function execute(Input $input, Output $output)

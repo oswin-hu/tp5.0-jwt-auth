@@ -1,0 +1,9 @@
+/composer.lock
+/vendor/
+zhougong_dream.iml.iml
+/.idea
+
+/*.iml
+/vendor
+/*.lock
+/*.iml
