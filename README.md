@@ -42,29 +42,27 @@
 第一步:
 
 ```shell
-$ composer require thans/tp-jwt-auth
+$ composer require oswin/tp-jwt-auth
 ```
 
 第二步:
 
 ```shell
 $ php think jwt:create
+
+-m 系统模块 默认全局配置,指定则在对应模块生成jwt配置
 ```
 此举将生成jwt.php和.env配置文件。不推荐直接修改jwt.php
 同时，env中会随机生成secret。请不要随意更新secret，也请保障secret安全。
 
 
-## 使用方式
 
-对于需要验证的路由或者模块添加中间件：
-```php
- thans\jwt\middleware\JWTAuth::class,
-```
+## 使用方式
 
 示例：
 
 ```php
-use thans\jwt\facade\JWTAuth;
+use jwt\facade\JWTAuth;
 
 $token = JWTAuth::builder(['uid' => 1]);//参数为用户认证的信息，请自行添加
 
@@ -103,20 +101,10 @@ token传参方式如下：
 1. 拉黑Token JWTAuth::invalidate($token);
 2. 查询Token是否黑名单 JWTAuth::validate($token);
 
-#### 常见问题
-- 使用RSA256方式的时候，请使用文本形式。如下：
-
-![image](https://thans.cn/Snipaste_2020-01-18_17-25-52.png)
-
-## 联系&打赏
-
-[打赏名单](SUPPORT.md)
-
-![image](https://thans.cn/others/thans.jpeg)
 
 ## 参考与借鉴
 
-https://github.com/tymondesigns/jwt-auth
+https://github.com/QThans/jwt-auth/
 
 ## 感谢
 
