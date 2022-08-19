@@ -39,8 +39,34 @@ class SecretCommand extends Command
 
     public function createConfig($output)
     {
-        $configFilePath = APP_PATH.'..'.DIRECTORY_SEPARATOR.'config'
-            .DIRECTORY_SEPARATOR.'jwt.php';
+        $configDir = APP_PATH;
+        if (!empty($this->getModule())) {
+            $moduleConfigDir = $configDir.DIRECTORY_SEPARATOR.$this->getModule();
+            if (is_dir($moduleConfigDir)) {
+                $configDir = $moduleConfigDir;
+            }
+        }
+
+        $configDir .= DIRECTORY_SEPARATOR.'extra';
+        if (!is_dir($configDir) && !mkdir($configDir, 0755) && !is_dir($configDir)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $configDir));
+        }
+        $configFilePath = $configDir.DIRECTORY_SEPARATOR.'jwt.php';
+
+        if (is_file($configFilePath)) {
+            $output->writeln('Config file is exist');
+            return;
+        }
+
+        $res = copy(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'
+            .DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR
+            .'config.php', $configFilePath);
+
+        if ($res) {
+            $output->writeln('Create config file success:'.$configFilePath);
+        } else {
+            $output->writeln('Create config file error');
+        }
     }
 
 }
