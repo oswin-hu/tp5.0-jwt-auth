@@ -1,0 +1,35 @@
+{
+  "name": "oswin/tp-jwt-auth",
+  "description": "thinkphp 5.0 jwt auth composer",
+  "keywords": [
+    "jwt",
+    "thinkphp",
+    "thinkphp 5.0",
+    "jwt-auth"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "oswin.hu",
+      "email": "oswin.hu@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "qeq66/jwt": "3.3.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "jwt\\": "src"
+    },
+    "files": [
+      "src/command.php"
+    ]
+  },
+  "extra": {
+    "think-config": {
+      "jwt": "config/config.php"
+    }
+  },
+  "minimum-stability": "dev"
+}
