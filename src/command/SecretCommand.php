@@ -33,6 +33,13 @@ class SecretCommand extends Command
             );
             $output->writeln('JWT_SECRET has created');
         }
+
+        $this->createConfig($output);
+    }
+
+    public function createConfig($output)
+    {
+
     }
 
 }
