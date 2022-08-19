@@ -39,7 +39,7 @@ class SecretCommand extends Command
 
     public function createConfig($output)
     {
-        $configFilePath = app()->getAppPath().'..'.DIRECTORY_SEPARATOR.'config'
+        $configFilePath = APP_PATH.'..'.DIRECTORY_SEPARATOR.'config'
             .DIRECTORY_SEPARATOR.'jwt.php';
     }
 
